@@ -1,0 +1,31 @@
+ROOTCFLAGS    = $(shell $(ROOTSYS)/bin/root-config --cflags)
+ROOTLIBS      = $(shell $(ROOTSYS)/bin/root-config --libs)
+ROOTGLIBS     = $(shell $(ROOTSYS)/bin/root-config --glibs)
+
+CXX  = g++
+CXX += -I./	
+CXX += -I./obj/
+
+CXXFLAGS  = -g -Wall -fPIC -Wno-deprecated
+CXXFLAGS += $(ROOTCFLAGS)
+
+OUTLIB = ./obj/
+
+#----------------------------------------------------#
+
+all: runana_ari_temp_arch	
+
+runana_ari_temp_arch: runana_ari_temp_arch.cpp obj/ana_ari_temp_arch.o obj/ana_ari_temp_archbase.o
+	$(CXX) -o runana_ari_temp_arch runana_ari_temp_arch.cpp $(OUTLIB)*.o $(ROOTCFLAGS) $(ROOTLIBS) $(ROOTGLIBS)
+
+obj/ana_ari_temp_arch.o: src/ana_ari_temp_arch.cpp src/ana_ari_temp_arch.hh obj/ana_ari_temp_archbase.o
+	$(CXX) $(CXXFLAGS) -c -I. -o $(OUTLIB)ana_ari_temp_arch.o $<
+
+obj/ana_ari_temp_archbase.o: src/ana_ari_temp_archbase.cpp src/ana_ari_temp_archbase.hh
+	$(CXX) $(CXXFLAGS) -c -I. -o $(OUTLIB)ana_ari_temp_archbase.o $<
+
+clean:
+	rm -f runana_ari_temp_arch
+	rm -f *~
+	rm -f src/*~
+	rm -f $(OUTLIB)*.o

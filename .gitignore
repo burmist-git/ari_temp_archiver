@@ -1,0 +1,8 @@
+*~
+src/*~
+obj
+B2_nsm_get_MONKS_ARI_TEMP_*
+ari_temp_archiver_converter
+aritemp-190423_hist.root
+aritemp-190423_hist.root.pdf
+runana_ari_temp_arch

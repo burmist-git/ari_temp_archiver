@@ -1,0 +1,6 @@
+B2_nsm:get:MONKS:ARI_TEMP_1:value
+B2_nsm:get:MONKS:ARI_TEMP_2:value
+B2_nsm:get:MONKS:ARI_TEMP_3:value
+B2_nsm:get:MONKS:ARI_TEMP_4:value
+B2_nsm:get:MONKS:ARI_TEMP_5:value
+B2_nsm:get:MONKS:ARI_TEMP_6:value
